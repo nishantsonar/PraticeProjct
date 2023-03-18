@@ -6,7 +6,6 @@ import com.packages.pratice_project.service.CustomerServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.security.PublicKey;
 import java.util.List;
 
 @Service
@@ -42,8 +41,8 @@ public class CustomerService implements CustomerServiceInterface {
         return "ALL CUSTOMER DETAILS DELETED.";
     }
 
-    public Customer_Table updateCustomer(Customer_Table customer_table,Long id) {
-        Customer_Table c=customerRepo.findById(id).get();
+    public Customer_Table updateCustomer(Customer_Table customer_table, Long id) {
+        Customer_Table c = customerRepo.findById(id).get();
         c.setFirstName(customer_table.getFirstName());
         c.setLastName(customer_table.getLastName());
         c.setEmailId(customer_table.getEmailId());
@@ -52,4 +51,6 @@ public class CustomerService implements CustomerServiceInterface {
         c.setIsActive(customer_table.getIsActive());
         return customerRepo.save(c);
     }
+
+
 }

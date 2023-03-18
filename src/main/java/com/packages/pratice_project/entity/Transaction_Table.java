@@ -2,7 +2,7 @@ package com.packages.pratice_project.entity;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 public class Transaction_Table {
@@ -13,7 +13,7 @@ public class Transaction_Table {
     private Long id;
 
     @Column(name = "ORDER_DATE")
-    private Date date=new Date();
+    private LocalDate date = LocalDate.now();
 
     @Column(name = "AMOUNT")
     private double amount;
@@ -21,14 +21,15 @@ public class Transaction_Table {
     @Column(name = "STATUS")
     private String status; //paid or unpaid
 
-    @Column(name = "ORDER_ID")
-    @JoinColumn(name = "ORDER_ID_FK", referencedColumnName = "ORDER_ID")
-    private Long orderId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ORDER_ID")//, referencedColumnName = "ORDER_ID")
+//    @Column(name = "ORDER_ID")
+    private Order_Table orderId;
 
     public Transaction_Table() {
     }
 
-    public Transaction_Table(Long id, Date date, double amount, String status, Long orderId) {
+    public Transaction_Table(Long id, LocalDate date, double amount, String status, Order_Table orderId) {
         this.id = id;
         this.date = date;
         this.amount = amount;
@@ -44,11 +45,11 @@ public class Transaction_Table {
         this.id = id;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -68,11 +69,11 @@ public class Transaction_Table {
         this.status = status;
     }
 
-    public Long getOrderId() {
+    public Order_Table getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Long orderId) {
+    public void setOrderId(Order_Table orderId) {
         this.orderId = orderId;
     }
 }

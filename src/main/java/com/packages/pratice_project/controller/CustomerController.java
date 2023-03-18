@@ -29,8 +29,8 @@ public class CustomerController {
     }
 
     @PutMapping("/update_customer/{id}")
-    public Customer_Table updateCustomer(@PathVariable Long id , @RequestBody Customer_Table customer_table) {
-        return customerService.updateCustomer(customer_table,id);
+    public Customer_Table updateCustomer(@PathVariable Long id, @RequestBody Customer_Table customer_table) {
+        return customerService.updateCustomer(customer_table, id);
     }
 
     @DeleteMapping("/delete_all_customer")

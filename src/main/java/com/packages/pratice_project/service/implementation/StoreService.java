@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class StoreService implements StoreServiceInterface {
 
@@ -41,11 +42,11 @@ public class StoreService implements StoreServiceInterface {
         return "ALL STORE DETAILS DELETED.";
     }
 
-    public Shop_Table updateShop(Shop_Table shop_table,Long id) {
-        Shop_Table c=shopRepo.findById(id).get();
-       c.setShop_Name(shop_table.getShop_Name());
-       c.setShop_Address(shop_table.getShop_Address());
-       c.setShop_Contact_No(shop_table.getShop_Contact_No());
+    public Shop_Table updateShop(Shop_Table shop_table, Long id) {
+        Shop_Table c = shopRepo.findById(id).get();
+        c.setShop_Name(shop_table.getShop_Name());
+        c.setShop_Address(shop_table.getShop_Address());
+        c.setShop_Contact_No(shop_table.getShop_Contact_No());
         return shopRepo.save(c);
     }
 }

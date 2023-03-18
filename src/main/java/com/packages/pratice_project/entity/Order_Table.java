@@ -11,19 +11,19 @@ public class Order_Table {
 
     @Column(name = "PAID_AMOUNT")
     private double paidAmount;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "SHOP_ID")//, referencedColumnName = "SHOP_ID")
+//    @Column(name = "SHOP_ID")
+    private Shop_Table shopId;
 
-    @JoinColumn(name = "SHOP_ID_FK", referencedColumnName = "SHOP_ID")
-    @Column(name = "SHOP_ID")
-    private Long shopId;
-
-    @Column(name = "ORDER_CUSTOMER_ID")
-    @JoinColumn(name = "CUSTOMER_ID_FK", referencedColumnName = "CUSTOMER_ID")
-    private Long customerId;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "ORDER_CUSTOMER_ID")//, referencedColumnName = "CUSTOMER_ID")
+    private Customer_Table customerId;
 
     public Order_Table() {
     }
 
-    public Order_Table(Long id, double paidAmount, Long shopId, Long customerId) {
+    public Order_Table(Long id, double paidAmount, Shop_Table shopId, Customer_Table customerId) {
         this.id = id;
         this.paidAmount = paidAmount;
         this.shopId = shopId;
@@ -46,19 +46,19 @@ public class Order_Table {
         this.paidAmount = paidAmount;
     }
 
-    public Long getShopId() {
+    public Shop_Table getShopId() {
         return shopId;
     }
 
-    public void setShopId(Long shopId) {
+    public void setShopId(Shop_Table shopId) {
         this.shopId = shopId;
     }
 
-    public Long getCustomerId() {
+    public Customer_Table getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(Long customerId) {
+    public void setCustomerId(Customer_Table customerId) {
         this.customerId = customerId;
     }
 }

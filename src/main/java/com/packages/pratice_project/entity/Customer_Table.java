@@ -20,12 +20,13 @@ public class Customer_Table {
     @Column(name = "ADDRESS")
     private String customerAddress;
     @Column(name = "ACTIVE")
-    private String isActive;
+    private boolean isActive;
 
     public Customer_Table() {
     }
 
-    public Customer_Table(Long id, String firstName, String lastName, String emailId, String mobileNo, String customerAddress, String isActive) {
+    public Customer_Table(Long id, String firstName, String lastName, String emailId, String mobileNo,
+                          String customerAddress, boolean isActive) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -83,11 +84,11 @@ public class Customer_Table {
         this.customerAddress = customerAddress;
     }
 
-    public String getIsActive() {
+    public boolean getIsActive() {
         return isActive;
     }
 
-    public void setIsActive(String isActive) {
+    public void setIsActive(boolean isActive) {
         this.isActive = isActive;
     }
 }

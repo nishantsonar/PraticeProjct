@@ -14,9 +14,10 @@ public class ShopController {
     private StoreServiceInterface storeService;
 
     @PostMapping("/add_store")
-    public String addStore( @RequestBody Shop_Table shop_table){
+    public String addStore(@RequestBody Shop_Table shop_table) {
         return storeService.addShop(shop_table);
     }
+
     @GetMapping("/get_all_store")
     public List<Shop_Table> getAllStore() {
         return storeService.getAllShop();
@@ -28,8 +29,8 @@ public class ShopController {
     }
 
     @PutMapping("/update_store/{id}")
-    public Shop_Table updateStore(@PathVariable Long id , @RequestBody Shop_Table customer_table) {
-        return storeService.updateShop(customer_table,id);
+    public Shop_Table updateStore(@PathVariable Long id, @RequestBody Shop_Table customer_table) {
+        return storeService.updateShop(customer_table, id);
     }
 
     @DeleteMapping("/delete_all_store")
